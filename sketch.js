@@ -2,39 +2,36 @@ let array = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(255, 204, 0);
-
-  strokeWeight(7);
-  noFill();
-
+  colorMode(HSB);
+  background(0);
 }
 
 function draw() {
-
+  colorMode(HSB);
   if (mouseIsPressed) {
-    //  line(mouseX, mouseY, pmouseX, pmouseY);
-    background(0);
-    array.push([mouseX, mouseY]);
+    noStroke();
+    stroke((5 * frameCount) % 360, 100, 100);
+    fill((5 * frameCount) % 360, 100, 100);
+
+    // ellipse(mouseX, mouseY, 30,30);
+    strokeWeight(.5);
+    line(mouseX, mouseY, pmouseX, pmouseY);
   }
+
+  colorMode(RGB);
 }
 
 function keyTyped() {
-
-  if (key === 's') {
+  if (key === 'c') {
+    //clear drawing
+    clear();
+    background(0);
+  } else if (key === 's') {
     // save this image
     saveCanvas('fileName', 'png');
-  } else if (key === 'd') {
-    //display image
-    background(255, 204, 0);
-    beginShape();
-    for (let i = 0; i < array.length; i++) {
-      //line(array[i][0], array[i][1], array[i+1][0], array[i+1][1]);
-      curveVertex(array[i][0], array[i][1]);
-    }
-    endShape();
-
   }
 
   return false;
 
 }
+//
