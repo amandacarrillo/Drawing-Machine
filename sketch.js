@@ -9,12 +9,13 @@ function setup() {
 function draw() {
   colorMode(HSB);
   if (mouseIsPressed) {
-    noStroke();
-    stroke((5 * frameCount) % 360, 100, 100);
-    fill((5 * frameCount) % 360, 100, 100);
+    //noStroke();
+    stroke(mouseX/ 10, mouseY/10, 100);
+    //fill((5 * frameCount) % 360, 100, 100);
+    console.log(windowWidth);
 
     // ellipse(mouseX, mouseY, 30,30);
-    strokeWeight(.5);
+    strokeWeight(5);
     line(mouseX, mouseY, pmouseX, pmouseY);
   }
 
